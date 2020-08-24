@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Challenges.Arrays
 {
-    class reverse
+    class Reverse
     {
+        static int[] ReverseArray(int[] array)
+        {
+            return array;
+        }
     }
 }
