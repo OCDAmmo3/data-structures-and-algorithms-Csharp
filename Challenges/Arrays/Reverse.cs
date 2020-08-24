@@ -6,7 +6,7 @@ namespace Challenges.Arrays
 {
     class Reverse
     {
-        static int[] ReverseArray(int[] array)
+        public static int[] ReverseArray(int[] array)
         {
             return array;
         }
