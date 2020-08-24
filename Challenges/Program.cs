@@ -7,11 +7,11 @@ namespace Challenges
     {
         static void Main(string[] args)
         {
-            int[] arrayToReverse = new[] { 1, 2, 3 };
+            int[] arrayToReverse = new[] { 1, 2, 3, 4, 5 };
 
-            Reverse.ReverseArray(arrayToReverse);
+            int[] reversed = Reverse.ReverseArray(arrayToReverse);
 
-            Console.WriteLine(String.Join(",", arrayToReverse));
+            Console.WriteLine(String.Join(",", reversed));
         }
     }
 }
