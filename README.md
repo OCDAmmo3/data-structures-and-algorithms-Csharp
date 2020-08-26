@@ -5,4 +5,4 @@ This README is for the base of the project.
 There will be many folders inside of the Challenges folder, each for a different data structure.  
 Each data structure will have it's own README as well, and a link to that README will be linked here as we create more.  
 
-![Arrays README](https://github.com/OCDAmmo3/data-structures-and-algorithms2/blob/master/Challenges/Arrays/README.md)
+[Arrays README](https://github.com/OCDAmmo3/data-structures-and-algorithms2/blob/master/Challenges/Arrays/README.md)
