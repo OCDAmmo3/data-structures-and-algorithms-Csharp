@@ -35,5 +35,20 @@ namespace Challenges.Tests.Arrays
             // Assert
             Assert.Equal(-1, result);
         }
+        /*
+        [Fact]
+        public static void Search_given_array_with_the_same_value_multiple_times_should_return_a_single_instance_index()
+        {
+            // Arrange
+            int[] array = new int[6] { 1, 1, 2, 3, 4, 5 };
+            int value = 1;
+
+            // Act
+            int result = BinarySearch.Search(value, array);
+
+            // Assert
+            // ================= SHARE WITH KEITH TO SEE IF YOU CAN CHECK AGAINST BOTH 0 AND 1 ===========
+            Assert.Equal(1, result);
+        } */
     }
 }
