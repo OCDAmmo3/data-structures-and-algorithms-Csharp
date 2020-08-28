@@ -55,11 +55,19 @@ namespace DataStructures.Tests.LinkedLists
             list.Insert(2);
             list.Insert(3);
 
-            // Act
-            bool result = list.Includes(2);
+            // Act + Assert
+            Assert.True(list.Includes(2));
+        }
 
-            // Assert
-            Assert.True(result);
+        [Fact]
+        public void Includes_returns_false_for_values_not_in_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+
+            // Act + Assert
+            Assert.False(list.Includes(14));
         }
     }
 }
