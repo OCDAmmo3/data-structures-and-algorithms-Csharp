@@ -37,6 +37,16 @@ namespace DataStructures.Tests.LinkedLists
         }
 
         [Fact]
+        public void ToString_returns_null_on_empty_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+
+            // Act + Assert
+            Assert.Equal("null", list.ToString());
+        }
+
+        [Fact]
         public void Includes_returns_true_for_values_in_list()
         {
             // Arrange
