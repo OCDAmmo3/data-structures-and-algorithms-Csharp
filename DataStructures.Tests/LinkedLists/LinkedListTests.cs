@@ -35,5 +35,21 @@ namespace DataStructures.Tests.LinkedLists
             // Assert2
             Assert.Equal("{ 2 } -> { 1 } -> null", list.ToString());
         }
+
+        [Fact]
+        public void Includes_returns_true_for_values_in_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+            list.Insert(2);
+            list.Insert(3);
+
+            // Act
+            bool result = list.Includes(2);
+
+            // Assert
+            Assert.True(result);
+        }
     }
 }
