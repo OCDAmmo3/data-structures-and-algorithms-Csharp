@@ -10,7 +10,10 @@ namespace DataStructures.LinkedLists
 
         public void Insert(int value)
         {
-
+            Node newNode = new Node();
+            newNode.Value = value;
+            newNode.Next = Head;
+            Head = newNode;
         }
 
         public bool Includes(int value)
@@ -20,7 +23,15 @@ namespace DataStructures.LinkedLists
 
         public override string ToString()
         {
-            return "null";
+            string str = "";
+            Node curr = Head;
+            while (curr != null)
+            {
+                str = str + "{ " + curr.Value + " } -> ";
+                curr = curr.Next;
+            }
+            str = str + "null";
+            return str;
         }
     }
 }
