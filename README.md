@@ -7,4 +7,5 @@ Each data structure will have it's own README as well, and a link to that README
   
 ![.NET Core](https://github.com/OCDAmmo3/data-structures-and-algorithms2/workflows/.NET%20Core/badge.svg)  
   
-[Arrays README](https://github.com/OCDAmmo3/data-structures-and-algorithms2/blob/master/Challenges/Arrays/README.md)
+[Arrays](https://github.com/OCDAmmo3/data-structures-and-algorithms2/blob/master/Challenges/Arrays/README.md)
+[Linked Lists](https://github.com/OCDAmmo3/data-structures-and-algorithms2/tree/master/DataStructures)
