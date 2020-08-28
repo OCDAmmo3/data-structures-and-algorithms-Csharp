@@ -27,7 +27,7 @@ namespace DataStructures.LinkedLists
             Node curr = Head;
             while (curr != null)
             {
-                str = str + "{ " + curr.Value + " } -> ";
+                str = $"{str}{{ {curr.Value} }} -> ";
                 curr = curr.Next;
             }
             str = str + "null";
