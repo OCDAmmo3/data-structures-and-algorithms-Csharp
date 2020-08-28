@@ -18,6 +18,15 @@ namespace DataStructures.LinkedLists
 
         public bool Includes(int value)
         {
+            Node curr = Head;
+            while (curr != null)
+            {
+                if (curr.Value == value)
+                {
+                    return true;
+                }
+                curr = curr.Next;
+            }
             return false;
         }
 
