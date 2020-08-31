@@ -10,8 +10,7 @@ namespace DataStructures.LinkedLists
 
         public void Insert(int value)
         {
-            Node newNode = new Node();
-            newNode.Value = value;
+            Node newNode = new Node(value);
             newNode.Next = Head;
             Head = newNode;
         }
@@ -41,6 +40,30 @@ namespace DataStructures.LinkedLists
             }
             str = str + "null";
             return str;
+        }
+
+        public void Append(int value)
+        {
+            if (Head == null)
+            {
+                Head = new Node(value);
+                return;
+            }
+
+            Node curr = Head;
+            while (curr.Next != null)
+                curr = curr.Next;
+
+            curr.Next = new Node(value);
+        }
+
+        public void InsertBefore(int value, int newVal)
+        {
+            if (!Includes(value))
+            {
+                throw new ArgumentException("Value given to insert before is not in list.");
+            }
+
         }
     }
 }
