@@ -26,3 +26,12 @@ Includes will search the list to try and find a given value. If it's in the list
 #### ToString()  
 ToString will take the whole list, converting it to a string that is easier to read for a user than the basic list structure.  
   
+#### Append(value)  
+Append works quite a bit like insert, but rather than adding the value to the beginning of the list, it adds it to the end.  
+  
+#### InsertBefore(value, newVal)  
+InsertBefore takes in a value and a new value. First, the method will search for the first value. Then when it finds it, it will insert the new value into the spot before that value.  
+  
+#### InsertAfter(value, newVal)  
+InsertAfter works identically to InsertBefore, but rather than inserting the new value before the given value, it instead inserts the new value after that given value.  
+  

@@ -73,5 +73,22 @@ namespace DataStructures.LinkedLists
             newNode.Next = curr.Next;
             curr.Next = newNode;
         }
+
+        public void InsertAfter(int value, int newVal)
+        {
+            if (!Includes(value))
+                throw new ArgumentException("Value given to insert after is not in list.");
+            if (Head.Value == value)
+                Append(value);
+
+            Node newNode = new Node(newVal);
+
+            Node curr = Head;
+            while (curr.Value != value)
+                curr = curr.Next;
+
+            newNode.Next = curr.Next;
+            curr.Next = newNode;
+        }
     }
 }
