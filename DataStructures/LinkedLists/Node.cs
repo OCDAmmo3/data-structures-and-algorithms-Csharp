@@ -2,6 +2,11 @@
 {
     public class Node
     {
+        public Node(int value)
+        {
+            Value = value;
+        }
+
         /// <summary>
         /// Value of this node.
         /// </summary>
