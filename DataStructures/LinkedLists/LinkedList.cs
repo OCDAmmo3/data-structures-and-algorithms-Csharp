@@ -60,10 +60,18 @@ namespace DataStructures.LinkedLists
         public void InsertBefore(int value, int newVal)
         {
             if (!Includes(value))
-            {
                 throw new ArgumentException("Value given to insert before is not in list.");
-            }
+            if (Head.Value == value)
+                Insert(value);
 
+            Node newNode = new Node(newVal);
+
+            Node curr = Head;
+            while (curr.Next.Value != value)
+                curr = curr.Next;
+
+            newNode.Next = curr.Next;
+            curr.Next = newNode;
         }
     }
 }
