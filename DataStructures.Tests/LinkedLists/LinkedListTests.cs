@@ -100,7 +100,7 @@ namespace DataStructures.Tests.LinkedLists
         }
 
         [Fact]
-        public void InsertBefore_adds_second_given_value_into_list_before_first_value()
+        public void InsertBefore_adds_second_given_value_into_list_before_first_given_value()
         {
             // Arrange
             LinkedList list = new LinkedList();
@@ -132,8 +132,41 @@ namespace DataStructures.Tests.LinkedLists
                 // Assert
                 Assert.Equal("Value given to insert before is not in list.", aex.Message);
             }
+        }
 
+        [Fact]
+        public void InsertAfter_adds_second_given_value_into_list_after_first_given_value()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(4);
 
+            // Act
+            list.InsertAfter(3, 7);
+
+            // Assert
+            Assert.Equal("{ 4 } -> { 3 } -> { 7 } -> { 2 } -> { 1 } -> null", list.ToString());
+        }
+
+        [Fact]
+        public void InsertAfter_breaks_if_value_is_not_in_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+
+            // Act
+            try
+            {
+                list.InsertAfter(3, 7);
+            }
+            catch (ArgumentException aex)
+            {
+                // Assert
+                Assert.Equal("Value given to insert after is not in list.", aex.Message);
+            }
         }
     }
 }
