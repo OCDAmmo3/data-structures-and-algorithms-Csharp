@@ -122,16 +122,13 @@ namespace DataStructures.Tests.LinkedLists
             // Arrange
             LinkedList list = new LinkedList();
 
-            // Act
-            try
+            // Assert
+            Exception ex = Assert.Throws<ValueMissingException>(() =>
             {
+                // Act
                 list.InsertBefore(3, 7);
-            }
-            catch (ArgumentException aex)
-            {
-                // Assert
-                Assert.Equal("Value given to insert before is not in list.", aex.Message);
-            }
+            });
+            Assert.Equal("Value 3 is not in list.", ex.Message);
         }
 
         [Fact]
@@ -157,16 +154,14 @@ namespace DataStructures.Tests.LinkedLists
             // Arrange
             LinkedList list = new LinkedList();
 
-            // Act
-            try
+            // Assert
+            Exception ex = Assert.Throws<ValueMissingException>(() =>
             {
+                // Act
                 list.InsertAfter(3, 7);
-            }
-            catch (ArgumentException aex)
-            {
-                // Assert
-                Assert.Equal("Value given to insert after is not in list.", aex.Message);
-            }
+            });
+            // Assert
+            Assert.Equal("Value 3 is not in list.", ex.Message);
         }
 
         [Fact]
