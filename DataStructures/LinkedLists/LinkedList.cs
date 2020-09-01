@@ -63,7 +63,7 @@ namespace DataStructures.LinkedLists
         public void InsertBefore(int value, int newVal)
         {
             if (!Includes(value))
-                throw new ArgumentException("Value given to insert before is not in list.");
+                throw new ValueMissingException(value);
             if (Head.Value == value)
                 Insert(value);
 
@@ -81,7 +81,7 @@ namespace DataStructures.LinkedLists
         public void InsertAfter(int value, int newVal)
         {
             if (!Includes(value))
-                throw new ArgumentException("Value given to insert after is not in list.");
+                throw new ValueMissingException(value);
             if (Head.Value == value)
                 Append(value);
 
