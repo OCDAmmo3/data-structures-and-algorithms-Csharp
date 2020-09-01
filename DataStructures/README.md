@@ -35,3 +35,6 @@ InsertBefore takes in a value and a new value. First, the method will search for
 #### InsertAfter(value, newVal)  
 InsertAfter works identically to InsertBefore, but rather than inserting the new value before the given value, it instead inserts the new value after that given value.  
   
+#### KthFromEnd(value)  
+KthFromEnd takes in a number, and tells you the value of the node that many spots from the end.  
+  

@@ -95,5 +95,19 @@ namespace DataStructures.LinkedLists
             curr.Next = newNode;
             Size++;
         }
+
+        public int KthFromEnd(int value)
+        {
+            value = Math.Abs(value);
+            if (value > this.Size || this.Size == 0)
+                throw new ValueTooLargeException(value);
+
+            Node curr = Head;
+            for (int i = 1; i < this.Size - value; i++)
+            {
+                curr = curr.Next;
+            }
+            return curr.Value;
+        }
     }
 }
