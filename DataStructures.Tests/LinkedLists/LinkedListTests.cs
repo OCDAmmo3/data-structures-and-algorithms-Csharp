@@ -189,5 +189,90 @@ namespace DataStructures.Tests.LinkedLists
             // Assert
             Assert.Equal(4, list.Size);
         }
+
+        [Fact]
+        public void KthFromEnd_throws_on_too_big_value()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+            list.Insert(2);
+
+            // Assert
+            Exception ex = Assert.Throws<ValueTooLargeException>(() =>
+            {
+                // Act
+                list.KthFromEnd(5);
+            });
+            Assert.Equal("Value 5 is too big for this list.", ex.Message);
+        }
+
+        [Theory]
+        [InlineData(0, 1)]
+        [InlineData(1, 2)]
+        [InlineData(2, 3)]
+        [InlineData(3, 4)]
+        [InlineData(4, 5)]
+        public void KthFromEnd_returns_the_kth_value_from_the_end(int k, int expected)
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(4);
+            list.Insert(5);
+
+            // Act
+            int result = list.KthFromEnd(k);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void KthFromEnd_returns_value_for_length_one_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(1);
+
+            // Act
+            int result = list.KthFromEnd(0);
+
+            // Assert
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void KthFromEnd_makes_negative_positive()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            for (int i = 1; i <= 10; i++)
+                list.Insert(i);
+
+            // Act
+            int result = list.KthFromEnd(-2);
+
+            // Assert
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void KthFromEnd_throws_on_empty_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            int value = 0;
+
+            // Assert
+            Exception ex = Assert.Throws<ValueTooLargeException>(() =>
+            {
+                // Act
+                list.KthFromEnd(value);
+            });
+            Assert.Equal($"Value {value} is too big for this list.", ex.Message);
+        }
     }
 }
