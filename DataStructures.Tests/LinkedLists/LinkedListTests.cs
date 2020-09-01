@@ -168,5 +168,31 @@ namespace DataStructures.Tests.LinkedLists
                 Assert.Equal("Value given to insert after is not in list.", aex.Message);
             }
         }
+
+        [Fact]
+        public void Size_starts_at_zero_in_new_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+
+            // Act + Assert
+            Assert.Equal(0, list.Size);
+        }
+
+        [Fact]
+        public void Size_grows_from_each_method()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+
+            // Act
+            list.Insert(1);
+            list.Append(2);
+            list.InsertBefore(2, 3);
+            list.InsertAfter(2, 4);
+
+            // Assert
+            Assert.Equal(4, list.Size);
+        }
     }
 }
