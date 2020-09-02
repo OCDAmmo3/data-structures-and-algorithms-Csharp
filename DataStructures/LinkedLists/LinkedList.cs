@@ -31,6 +31,20 @@ namespace DataStructures.LinkedLists
             return false;
         }
 
+        public int[] ToArray()
+        {
+            int[] arr = new int[this.Size];
+            Node curr = Head;
+            int count = 0;
+            while (curr != null)
+            {
+                arr[count] = curr.Value;
+                curr = curr.Next;
+                count++;
+            }
+            return arr;
+        }
+
         public override string ToString()
         {
             string str = "";
