@@ -274,5 +274,35 @@ namespace DataStructures.Tests.LinkedLists
             });
             Assert.Equal($"Value {value} is too big for this list.", ex.Message);
         }
+
+        [Fact]
+        public void ToArray_returns_array_with_all_list_values()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+            list.Insert(4);
+            list.Insert(3);
+            list.Insert(2);
+            list.Insert(1);
+
+            // Act
+            int[] result = list.ToArray();
+
+            // Assert
+            Assert.Equal(new[] { 1, 2, 3, 4 }, result);
+        }
+
+        [Fact]
+        public void ToArray_returns_empty_array_length_0_on_empty_list()
+        {
+            // Arrange
+            LinkedList list = new LinkedList();
+
+            // Act
+            int[] result = list.ToArray();
+
+            // Assert
+            Assert.Equal(new int[0], result);
+        }
     }
 }
