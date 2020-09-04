@@ -4,15 +4,15 @@ using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    class StackNode
+    public class StackNode<T>
     {
-        public StackNode(int value)
+        public StackNode(T value)
         {
             Value = value;
         }
 
-        public int Value { get; }
+        public T Value { get; }
 
-        public StackNode Next { get; set; }
+        public StackNode<T> Next { get; set; }
     }
 }

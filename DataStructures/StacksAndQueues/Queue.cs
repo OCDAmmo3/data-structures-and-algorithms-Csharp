@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    class Queue
+    public class Queue<T>
     {
     }
 }

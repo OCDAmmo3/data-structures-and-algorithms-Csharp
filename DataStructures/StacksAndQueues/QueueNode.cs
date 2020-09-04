@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    class QueueNode
+    public class QueueNode
     {
         public QueueNode(int value)
         {
