@@ -4,17 +4,17 @@ using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    public class QueueNode
+    public class QueueNode<T>
     {
-        public QueueNode(int value)
+        public QueueNode(T value)
         {
             Value = value;
         }
 
-        public int Value { get; }
+        public T Value { get; }
 
-        public QueueNode Next { get; set; }
+        public QueueNode<T> Next { get; set; }
 
-        public QueueNode Prev { get; set; }
+        public QueueNode<T> Prev { get; set; }
     }
 }
