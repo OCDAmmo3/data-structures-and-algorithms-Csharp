@@ -16,5 +16,18 @@ namespace DataStructures.StacksAndQueues
             Top = newNode;
             Size++;
         }
+
+        public override string ToString()
+        {
+            StackNode<object> curr = Top;
+            string str = "";
+            while (curr.Next != null)
+            {
+                str = $"{str}{curr.Value}, ";
+                curr = curr.Next;
+            }
+            str = $"{str}{curr.Value}";
+            return str;
+        }
     }
 }

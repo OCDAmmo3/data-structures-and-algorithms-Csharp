@@ -9,7 +9,7 @@ namespace DataStructures.Tests.StacksAndQueues
     public class StacksTests
     {
         [Fact]
-        public void Push_can_push_any_value_type()
+        public void Push_can_push_any_value_type_and_ToString_works()
         {
             // Arrange
             Stack stack = new Stack();
@@ -20,6 +20,7 @@ namespace DataStructures.Tests.StacksAndQueues
 
             // Assert
             Assert.Equal(2, stack.Size);
+            Assert.Equal("2, one", stack.ToString());
         }
     }
 }
