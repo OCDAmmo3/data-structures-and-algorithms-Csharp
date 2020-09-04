@@ -26,7 +26,19 @@ namespace DataStructures.StacksAndQueues
             }
             catch
             {
-                throw new EmptyStackException();
+                throw new EmptyStackException("pop");
+            }
+        }
+
+        public object Peek()
+        {
+            try
+            {
+                return Top.Value;
+            }
+            catch
+            {
+                throw new EmptyStackException("peek");
             }
         }
 

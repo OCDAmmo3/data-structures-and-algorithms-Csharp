@@ -62,5 +62,38 @@ namespace DataStructures.Tests.StacksAndQueues
             // Assert
             Assert.Equal("This list is empty. Cannot pop.", ex.Message);
         }
+
+        [Fact]
+        public void Peek_returns_the_value_from_the_top_of_the_stack()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push("three");
+
+            // Act
+            object result = stack.Peek();
+
+            // Assert
+            Assert.Equal(3, stack.Size);
+            Assert.Equal("three", result);
+        }
+
+        [Fact]
+        public void Peek_throws_upon_empty_stack()
+        {
+            // Arrange
+            Stack stack = new Stack();
+
+            // Assert
+            Exception ex = Assert.Throws<EmptyStackException>(() =>
+            {
+                // Act
+                stack.Peek();
+            });
+            // Assert
+            Assert.Equal("This list is empty. Cannot peek.", ex.Message);
+        }
     }
 }
