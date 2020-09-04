@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace DataStructures.StacksAndQueues
@@ -26,6 +25,29 @@ namespace DataStructures.StacksAndQueues
                 Back.Next = newNode;
                 Back = newNode;
                 Length++;
+            }
+        }
+
+        public object Dequeue()
+        {
+            if (Front == null)
+            {
+                throw new EmptyQueueException("dequeue");
+            }
+            else if (Length == 1)
+            {
+                QueueNode<object> temp = Front;
+                Front = null;
+                Length--;
+                return temp.Value;
+            }
+            else
+            {
+                QueueNode<object> temp = Front;
+                Front = Front.Next;
+                Front.Prev = null;
+                Length--;
+                return temp.Value;
             }
         }
 
