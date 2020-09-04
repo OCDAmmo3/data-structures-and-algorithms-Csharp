@@ -51,6 +51,20 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
+        public object Peek()
+        {
+            if (Front == null)
+            {
+                throw new EmptyQueueException("peek");
+            }
+            return Front.Value;
+        }
+
+        public bool IsEmpty()
+        {
+            return Front == null ? true : false;
+        }
+
         public override string ToString()
         {
             QueueNode<object> curr = Front;
