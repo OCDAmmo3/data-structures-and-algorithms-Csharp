@@ -95,5 +95,33 @@ namespace DataStructures.Tests.StacksAndQueues
             // Assert
             Assert.Equal("This list is empty. Cannot peek.", ex.Message);
         }
+
+        [Fact]
+        public void IsEmpty_returns_true_for_empty_list()
+        {
+            // Arrange
+            Stack stack = new Stack();
+
+            // Act
+            bool result = stack.IsEmpty();
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsEmpty_returns_false_for_nonempty_list()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            stack.Push(1);
+            stack.Push("two");
+
+            // Act
+            bool result = stack.IsEmpty();
+
+            // Assert
+            Assert.False(result);
+        }
     }
 }

@@ -42,6 +42,11 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
+        public bool IsEmpty()
+        {
+            return Top == null ? true : false;
+        }
+
         public override string ToString()
         {
             StackNode<object> curr = Top;
