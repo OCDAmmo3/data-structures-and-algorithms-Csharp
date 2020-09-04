@@ -17,6 +17,19 @@ namespace DataStructures.StacksAndQueues
             Size++;
         }
 
+        public void Pop()
+        {
+            try
+            {
+                Top = Top.Next;
+                Size--;
+            }
+            catch
+            {
+                throw new EmptyStackException();
+            }
+        }
+
         public override string ToString()
         {
             StackNode<object> curr = Top;
