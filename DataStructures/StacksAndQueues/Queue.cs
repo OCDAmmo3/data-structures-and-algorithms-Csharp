@@ -31,13 +31,13 @@ namespace DataStructures.StacksAndQueues
         public object Dequeue()
         {
             if (Front == null)
-            {
                 throw new EmptyQueueException("dequeue");
-            }
+
             else if (Length == 1)
             {
                 QueueNode<object> temp = Front;
                 Front = null;
+                Back = null;
                 Length--;
                 return temp.Value;
             }
@@ -67,12 +67,18 @@ namespace DataStructures.StacksAndQueues
         {
             QueueNode<object> curr = Front;
             string str = "";
-            while (curr.Next != null)
+            if (Front != null)
             {
-                str = $"{str}{curr.Value}, ";
-                curr = curr.Next;
+                while (curr.Next != null)
+                {
+                    str = $"{str}{curr.Value}, ";
+                    curr = curr.Next;
+                }
+                str = $"{str}{curr.Value}";
             }
-            str = $"{str}{curr.Value}";
+            else
+                str = "null";
+
             return str;
         }
     }

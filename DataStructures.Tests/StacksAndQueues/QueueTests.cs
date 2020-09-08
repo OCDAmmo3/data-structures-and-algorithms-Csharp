@@ -144,5 +144,18 @@ namespace DataStructures.Tests.StacksAndQueues
             Assert.Equal(0, queue.Length);
             Assert.Equal("hello", dq3);
         }
+
+        [Fact]
+        public void ToString_returns_properly_for_empty_queue()
+        {
+            // Arrange
+            Queue queue = new Queue();
+
+            // Act
+            string result = queue.ToString();
+
+            // Assert
+            Assert.Equal("null", result);
+        }
     }
 }

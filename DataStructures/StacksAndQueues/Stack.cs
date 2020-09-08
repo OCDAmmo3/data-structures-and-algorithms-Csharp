@@ -55,9 +55,8 @@ namespace DataStructures.StacksAndQueues
                 str = $"{str}{curr.Value}";
             }
             else
-            {
                 str = "null";
-            }
+
             return str;
         }
     }
