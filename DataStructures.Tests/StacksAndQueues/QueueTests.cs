@@ -116,5 +116,46 @@ namespace DataStructures.Tests.StacksAndQueues
             // Assert
             Assert.False(result);
         }
+
+        [Fact]
+        public void Enqueue_dequeue_patterns_do_not_mess_with_each_other()
+        {
+            // This is a series of enqueues and dequeues and constant checks to make sure that bugs aren't present as the queue grows and shrinks
+            Queue queue = new Queue();
+            Assert.Equal(0, queue.Length);
+
+            queue.Enqueue(1);
+            Assert.Equal(1, queue.Length);
+            queue.Enqueue(2);
+            Assert.Equal(2, queue.Length);
+            Assert.Equal("1, 2", queue.ToString());
+
+            object dq1 = queue.Dequeue();
+            Assert.Equal(1, queue.Length);
+            Assert.Equal(1, dq1);
+            object dq2 = queue.Dequeue();
+            Assert.Equal(0, queue.Length);
+            Assert.Equal(2, dq2);
+
+            queue.Enqueue("hello");
+            Assert.Equal("hello", queue.ToString());
+            Assert.Equal(1, queue.Length);
+            object dq3 = queue.Dequeue();
+            Assert.Equal(0, queue.Length);
+            Assert.Equal("hello", dq3);
+        }
+
+        [Fact]
+        public void ToString_returns_properly_for_empty_queue()
+        {
+            // Arrange
+            Queue queue = new Queue();
+
+            // Act
+            string result = queue.ToString();
+
+            // Assert
+            Assert.Equal("null", result);
+        }
     }
 }

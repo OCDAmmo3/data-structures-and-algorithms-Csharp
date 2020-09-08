@@ -30,7 +30,7 @@ namespace DataStructures.Tests.StacksAndQueues
         }
 
         [Fact]
-        public void Pop_removes_the_top_node()
+        public void Pop_removes_the_top_node_and_returns_value()
         {
             // Arrange
             Stack stack = new Stack();
@@ -40,11 +40,38 @@ namespace DataStructures.Tests.StacksAndQueues
             Assert.Equal(2, stack.Size);
 
             // Act
-            stack.Pop();
+            object result = stack.Pop();
 
             // Assert
             Assert.Equal(1, stack.Size);
             Assert.Equal("1000000", stack.ToString());
+            Assert.Equal("hello", result);
+        }
+
+        [Fact]
+        public void Pop_can_make_a_list_empty()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            stack.Push(1);
+            Assert.Equal(1, stack.Size);
+            stack.Push(2);
+            Assert.Equal(2, stack.Size);
+            stack.Push("three");
+            Assert.Equal(3, stack.Size);
+
+            // Act
+            object result1 = stack.Pop();
+            Assert.Equal(2, stack.Size);
+            object result2 = stack.Pop();
+            Assert.Equal(1, stack.Size);
+            object result3 = stack.Pop();
+            Assert.Equal(0, stack.Size);
+
+            object[] results = new object[] { result1, result2, result3 };
+
+            // Assert
+            Assert.Equal(new object[] { "three", 2, 1 }, results);
         }
 
         [Fact]
@@ -122,6 +149,19 @@ namespace DataStructures.Tests.StacksAndQueues
 
             // Assert
             Assert.False(result);
+        }
+
+        [Fact]
+        public void ToString_returns_properly_if_empty_stack()
+        {
+            // Arrange
+            Stack stack = new Stack();
+
+            // Act
+            string result = stack.ToString();
+
+            // Assert
+            Assert.Equal("null", result);
         }
     }
 }
