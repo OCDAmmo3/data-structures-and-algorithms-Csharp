@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    public class Queue
+    public class Queue : IQueue
     {
         public QueueNode<object> Front { get; set; }
         public QueueNode<object> Back { get; set; }
