@@ -53,12 +53,19 @@ namespace DataStructures.StacksAndQueues
         {
             StackNode<object> curr = Top;
             string str = "";
-            while (curr.Next != null)
+            if (Top != null)
             {
-                str = $"{str}{curr.Value}, ";
-                curr = curr.Next;
+                while (curr.Next != null)
+                {
+                    str = $"{str}{curr.Value}, ";
+                    curr = curr.Next;
+                }
+                str = $"{str}{curr.Value}";
             }
-            str = $"{str}{curr.Value}";
+            else
+            {
+                str = "null";
+            }
             return str;
         }
     }

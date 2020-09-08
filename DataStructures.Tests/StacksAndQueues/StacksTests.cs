@@ -124,5 +124,18 @@ namespace DataStructures.Tests.StacksAndQueues
             // Assert
             Assert.False(result);
         }
+
+        [Fact]
+        public void ToString_returns_properly_if_empty_stack()
+        {
+            // Arrange
+            Stack stack = new Stack();
+
+            // Act
+            string result = stack.ToString();
+
+            // Assert
+            Assert.Equal("null", result);
+        }
     }
 }
