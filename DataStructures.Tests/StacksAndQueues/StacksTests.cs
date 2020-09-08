@@ -30,7 +30,7 @@ namespace DataStructures.Tests.StacksAndQueues
         }
 
         [Fact]
-        public void Pop_removes_the_top_node()
+        public void Pop_removes_the_top_node_and_returns_value()
         {
             // Arrange
             Stack stack = new Stack();
@@ -40,11 +40,12 @@ namespace DataStructures.Tests.StacksAndQueues
             Assert.Equal(2, stack.Size);
 
             // Act
-            stack.Pop();
+            object result = stack.Pop();
 
             // Assert
             Assert.Equal(1, stack.Size);
             Assert.Equal("1000000", stack.ToString());
+            Assert.Equal("hello", result);
         }
 
         [Fact]

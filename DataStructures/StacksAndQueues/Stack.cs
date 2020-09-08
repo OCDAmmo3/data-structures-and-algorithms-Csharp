@@ -17,12 +17,14 @@ namespace DataStructures.StacksAndQueues
             Size++;
         }
 
-        public void Pop()
+        public object Pop()
         {
             try
             {
+                StackNode<object> temp = Top;
                 Top = Top.Next;
                 Size--;
+                return temp.Value;
             }
             catch
             {
