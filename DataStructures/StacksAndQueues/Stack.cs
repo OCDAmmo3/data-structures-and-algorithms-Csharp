@@ -19,29 +19,21 @@ namespace DataStructures.StacksAndQueues
 
         public object Pop()
         {
-            try
-            {
-                StackNode<object> temp = Top;
-                Top = Top.Next;
-                Size--;
-                return temp.Value;
-            }
-            catch
-            {
+            if (Top == null)
                 throw new EmptyStackException("pop");
-            }
+
+            StackNode<object> temp = Top;
+            Top = Top.Next;
+            Size--;
+            return temp.Value;
         }
 
         public object Peek()
         {
-            try
-            {
-                return Top.Value;
-            }
-            catch
-            {
+            if (Top == null)
                 throw new EmptyStackException("peek");
-            }
+
+            return Top.Value;
         }
 
         public bool IsEmpty()
