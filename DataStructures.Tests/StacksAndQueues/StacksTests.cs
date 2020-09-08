@@ -49,6 +49,32 @@ namespace DataStructures.Tests.StacksAndQueues
         }
 
         [Fact]
+        public void Pop_can_make_a_list_empty()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            stack.Push(1);
+            Assert.Equal(1, stack.Size);
+            stack.Push(2);
+            Assert.Equal(2, stack.Size);
+            stack.Push("three");
+            Assert.Equal(3, stack.Size);
+
+            // Act
+            object result1 = stack.Pop();
+            Assert.Equal(2, stack.Size);
+            object result2 = stack.Pop();
+            Assert.Equal(1, stack.Size);
+            object result3 = stack.Pop();
+            Assert.Equal(0, stack.Size);
+
+            object[] results = new object[] { result1, result2, result3 };
+
+            // Assert
+            Assert.Equal(new object[] { "three", 2, 1 }, results);
+        }
+
+        [Fact]
         public void Pop_throws_upon_empty_stack()
         {
             // Arrange
