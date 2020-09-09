@@ -40,7 +40,7 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
-        public object Dequeue()
+        public T Dequeue()
         {
             if (Front == null)
                 throw new EmptyQueueException("dequeue");
@@ -63,7 +63,7 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
-        public object Peek()
+        public T Peek()
         {
             if (Front == null)
                 throw new EmptyQueueException("peek");
