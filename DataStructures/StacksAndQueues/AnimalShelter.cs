@@ -52,6 +52,7 @@ namespace DataStructures.StacksAndQueues
         public Animal.Type? ADequeue(Animal.Type pref)
         {
             Node curr = Front;
+            Length--;
             if (pref == Animal.Type.Dog || pref == Animal.Type.Cat)
             {
                 while (curr != null)
@@ -71,6 +72,14 @@ namespace DataStructures.StacksAndQueues
                 }
                 return null;
             }
+            return null;
+        }
+
+        public Animal.Type? ADequeue()
+        {
+            Length--;
+            if (Front != null)
+                return Front.Value;
             return null;
         }
 
