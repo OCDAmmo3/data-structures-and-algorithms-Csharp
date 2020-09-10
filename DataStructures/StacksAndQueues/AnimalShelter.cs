@@ -12,7 +12,7 @@ namespace DataStructures.StacksAndQueues
         }
     }
 
-    class AnimalShelter
+    public class AnimalShelter
     {
         public class Node
         {
@@ -59,8 +59,10 @@ namespace DataStructures.StacksAndQueues
                     if (curr.Value == pref)
                     {
                         Node temp = curr;
-                        curr.Prev.Next = temp.Next;
-                        curr.Next.Prev = temp.Prev;
+                        if (curr.Prev != null)
+                            curr.Prev.Next = temp.Next;
+                        if (curr.Next != null)
+                            curr.Next.Prev = temp.Prev;
                         return curr.Value;
                     }
                     curr = curr.Next;
@@ -70,6 +72,11 @@ namespace DataStructures.StacksAndQueues
                 return null;
             }
             return null;
+        }
+
+        public bool EmptyShelter()
+        {
+            return Front == null ? true : false;
         }
     }
 }
