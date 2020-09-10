@@ -1,6 +1,5 @@
 ﻿using DataStructures.StacksAndQueues;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
@@ -12,12 +11,12 @@ namespace DataStructures.Tests.StacksAndQueues
         public void Enqueue_adds_node_to_the_end_of_the_queue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
 
             // Act
-            queue.Enqueue(1);
+            queue.Enqueue("1");
             queue.Enqueue("two");
-            queue.Enqueue(3);
+            queue.Enqueue("3");
 
             // Assert
             Assert.Equal(3, queue.Length);
@@ -28,9 +27,9 @@ namespace DataStructures.Tests.StacksAndQueues
         public void Dequeue_removes_front_value_from_list()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<int> queue = new Queue<int>();
             queue.Enqueue(1);
-            queue.Enqueue("two");
+            queue.Enqueue(2);
             queue.Enqueue(3);
 
             // Act
@@ -38,14 +37,14 @@ namespace DataStructures.Tests.StacksAndQueues
 
             // Assert
             Assert.Equal(2, queue.Length);
-            Assert.Equal("two, 3", queue.ToString());
+            Assert.Equal("2, 3", queue.ToString());
         }
 
         [Fact]
         public void Dequeue_throws_exception_for_empty_queue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
 
             // Assert
             Exception ex = Assert.Throws<EmptyQueueException>(() =>
@@ -60,24 +59,24 @@ namespace DataStructures.Tests.StacksAndQueues
         public void Peek_returns_value_of_front_node()
         {
             // Arrange
-            Queue queue = new Queue();
-            queue.Enqueue(1);
+            Queue<string> queue = new Queue<string>();
+            queue.Enqueue("1");
             queue.Enqueue("two");
             queue.Enqueue("three");
-            queue.Enqueue(4);
+            queue.Enqueue("4");
 
             // Act
-            object result = queue.Peek();
+            string result = queue.Peek();
 
             // Assert
-            Assert.Equal(1, result);
+            Assert.Equal("1", result);
         }
 
         [Fact]
         public void Peek_throws_exception_for_empty_queue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<int> queue = new Queue<int>();
 
             // Assert
             Exception ex = Assert.Throws<EmptyQueueException>(() =>
@@ -92,7 +91,7 @@ namespace DataStructures.Tests.StacksAndQueues
         public void IsEmpty_returns_true_for_empty_list()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<int> queue = new Queue<int>();
 
             // Act
             bool result = queue.IsEmpty();
@@ -105,7 +104,7 @@ namespace DataStructures.Tests.StacksAndQueues
         public void IsEmpty_returns_false_for_nonempty_list()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<int> queue = new Queue<int>();
             queue.Enqueue(1);
             queue.Enqueue(2);
             queue.Enqueue(3);
@@ -121,7 +120,7 @@ namespace DataStructures.Tests.StacksAndQueues
         public void Enqueue_dequeue_patterns_do_not_mess_with_each_other()
         {
             // This is a series of enqueues and dequeues and constant checks to make sure that bugs aren't present as the queue grows and shrinks
-            Queue queue = new Queue();
+            Queue<int> queue = new Queue<int>();
             Assert.Equal(0, queue.Length);
 
             queue.Enqueue(1);
@@ -137,19 +136,19 @@ namespace DataStructures.Tests.StacksAndQueues
             Assert.Equal(0, queue.Length);
             Assert.Equal(2, dq2);
 
-            queue.Enqueue("hello");
-            Assert.Equal("hello", queue.ToString());
+            queue.Enqueue(1);
+            Assert.Equal("1", queue.ToString());
             Assert.Equal(1, queue.Length);
             object dq3 = queue.Dequeue();
             Assert.Equal(0, queue.Length);
-            Assert.Equal("hello", dq3);
+            Assert.Equal(1, dq3);
         }
 
         [Fact]
         public void ToString_returns_properly_for_empty_queue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
 
             // Act
             string result = queue.ToString();

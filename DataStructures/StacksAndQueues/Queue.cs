@@ -1,18 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace DataStructures.StacksAndQueues
 {
-    public class Queue : IQueue
+    public class Queue<T>
     {
-        public QueueNode<object> Front { get; set; }
-        public QueueNode<object> Back { get; set; }
+        public class QueueNode
+        {
+            public QueueNode(T value)
+            {
+                Value = value;
+            }
+
+            public T Value { get; set; }
+
+            public QueueNode Next { get; set; }
+            public QueueNode Prev { get; set; }
+        }
+
+        public QueueNode Front { get; set; }
+        public QueueNode Back { get; set; }
 
         public int Length = 0;
 
-        public void Enqueue(object value)
+        public void Enqueue(T value)
         {
-            QueueNode<object> newNode = new QueueNode<object>(value);
+            QueueNode newNode = new QueueNode(value);
             if (Front == null)
             {
                 Front = newNode;
@@ -28,14 +40,14 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
-        public object Dequeue()
+        public T Dequeue()
         {
             if (Front == null)
                 throw new EmptyQueueException("dequeue");
 
             else if (Length == 1)
             {
-                QueueNode<object> temp = Front;
+                QueueNode temp = Front;
                 Front = null;
                 Back = null;
                 Length--;
@@ -43,7 +55,7 @@ namespace DataStructures.StacksAndQueues
             }
             else
             {
-                QueueNode<object> temp = Front;
+                QueueNode temp = Front;
                 Front = Front.Next;
                 Front.Prev = null;
                 Length--;
@@ -51,7 +63,7 @@ namespace DataStructures.StacksAndQueues
             }
         }
 
-        public object Peek()
+        public T Peek()
         {
             if (Front == null)
                 throw new EmptyQueueException("peek");
@@ -65,7 +77,7 @@ namespace DataStructures.StacksAndQueues
 
         public override string ToString()
         {
-            QueueNode<object> curr = Front;
+            QueueNode curr = Front;
             string str = "";
             if (Front != null)
             {
