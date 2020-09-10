@@ -48,5 +48,28 @@ namespace DataStructures.StacksAndQueues
             }
             Length++;
         }
+
+        public Animal.Type? ADequeue(Animal.Type pref)
+        {
+            Node curr = Front;
+            if (pref == Animal.Type.Dog || pref == Animal.Type.Cat)
+            {
+                while (curr != null)
+                {
+                    if (curr.Value == pref)
+                    {
+                        Node temp = curr;
+                        curr.Prev.Next = temp.Next;
+                        curr.Next.Prev = temp.Prev;
+                        return curr.Value;
+                    }
+                    curr = curr.Next;
+                    if (curr == Back)
+                        break;
+                }
+                return null;
+            }
+            return null;
+        }
     }
 }
