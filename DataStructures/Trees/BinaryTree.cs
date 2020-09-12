@@ -60,5 +60,26 @@ namespace DataStructures.Trees
                 InOrder(root.Right, queue);
             return queue.ToString();
         }
+
+        public string PostOrder(Node root)
+        {
+            Queue<T> queue = new Queue<T>();
+            if (root.Left != null)
+                PostOrder(root.Left, queue);
+            if (root.Right != null)
+                PostOrder(root.Right, queue);
+            queue.Enqueue(root.Value);
+            return queue.ToString();
+        }
+
+        public string PostOrder(Node root, Queue<T> queue)
+        {
+            if (root.Left != null)
+                PostOrder(root.Left, queue);
+            if (root.Right != null)
+                PostOrder(root.Right, queue);
+            queue.Enqueue(root.Value);
+            return queue.ToString();
+        }
     }
 }

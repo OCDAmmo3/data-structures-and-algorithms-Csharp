@@ -46,5 +46,18 @@ namespace DataStructures.Tests.Trees
             // Assert
             Assert.Equal("RootLeftLeft, RootLeft, RootLeftRight, Root, RootRightLeft, RootRight, RootRightRight", result);
         }
+
+        [Fact]
+        public void PostOrder_should_return_tree_from_bottom_up()
+        {
+            // Arrange
+            BinaryTree<string> tree = CreateTree();
+
+            // Act
+            string result = tree.PostOrder(tree.Root);
+
+            // Assert
+            Assert.Equal("RootLeftLeft, RootLeftRight, RootLeft, RootRightLeft, RootRightRight, RootRight, Root", result);
+        }
     }
 }
