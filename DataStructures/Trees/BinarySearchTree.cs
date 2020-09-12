@@ -44,23 +44,23 @@ namespace DataStructures.Trees
                 return true;
 
             if (value < Root.Value)
-                Contains(value, Root.Left);
+                return Contains(value, Root.Left);
             else if (value > Root.Value)
-                Contains(value, Root.Right);
+                return Contains(value, Root.Right);
             return false;
         }
 
         public bool Contains(int value, Node root)
         {
-            if (Root == null)
+            if (root == null)
                 return false;
-            else if (Root.Value == value)
+            else if (root.Value == value)
                 return true;
 
-            if (value < Root.Value)
-                Contains(value, Root.Left);
-            else if (value > Root.Value)
-                Contains(value, Root.Right);
+            if (value < root.Value)
+                return Contains(value, root.Left);
+            else if (value > root.Value)
+                return Contains(value, root.Right);
             return false;
         }
     }
