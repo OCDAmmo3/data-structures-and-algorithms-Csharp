@@ -17,7 +17,6 @@ namespace DataStructures.Trees
         }
 
         public Node Root { get; set; }
-        public int Length { get; set; }
 
         public string PreOrder(Node root)
         {

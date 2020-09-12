@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 using DataStructures.Trees;
 
 namespace DataStructures.Tests.Trees
@@ -58,6 +55,27 @@ namespace DataStructures.Tests.Trees
 
             // Assert
             Assert.Equal("RootLeftLeft, RootLeftRight, RootLeft, RootRightLeft, RootRightRight, RootRight, Root", result);
+        }
+
+        [Fact]
+        public void Add_works_for_binary_search_tree()
+        {
+            // Arrange
+            BinarySearchTree tree = new BinarySearchTree();
+
+            // Act
+            tree.Add(4);
+            tree.Add(2);
+            tree.Add(6);
+            tree.Add(1);
+            tree.Add(3);
+            tree.Add(5);
+            tree.Add(7);
+
+            // Assert
+            Assert.Equal("1, 2, 3, 4, 5, 6, 7", tree.InOrder(tree.Root));
+            Assert.Equal("4, 2, 1, 3, 6, 5, 7", tree.PreOrder(tree.Root));
+            Assert.Equal("1, 3, 2, 5, 7, 6, 4", tree.PostOrder(tree.Root));
         }
     }
 }
