@@ -35,5 +35,33 @@ namespace DataStructures.Trees
             if (value > root.Value)
                 Add(value, root.Right);
         }
+
+        public bool Contains(int value)
+        {
+            if (Root == null)
+                return false;
+            else if (Root.Value == value)
+                return true;
+
+            if (value < Root.Value)
+                Contains(value, Root.Left);
+            else if (value > Root.Value)
+                Contains(value, Root.Right);
+            return false;
+        }
+
+        public bool Contains(int value, Node root)
+        {
+            if (Root == null)
+                return false;
+            else if (Root.Value == value)
+                return true;
+
+            if (value < Root.Value)
+                Contains(value, Root.Left);
+            else if (value > Root.Value)
+                Contains(value, Root.Right);
+            return false;
+        }
     }
 }

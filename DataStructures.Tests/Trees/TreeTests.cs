@@ -77,5 +77,35 @@ namespace DataStructures.Tests.Trees
             Assert.Equal("4, 2, 1, 3, 6, 5, 7", tree.PreOrder(tree.Root));
             Assert.Equal("1, 3, 2, 5, 7, 6, 4", tree.PostOrder(tree.Root));
         }
+
+        [Fact]
+        public void Contains_returns_true_for_value_in_search_tree()
+        {
+            // Arrange
+            BinarySearchTree tree = new BinarySearchTree();
+            tree.Add(4);
+            tree.Add(2);
+            tree.Add(3);
+
+            // Act
+            bool result = tree.Contains(3);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Contains_returns_false_for_value_not_in_tree()
+        {
+            // Arrange
+            BinarySearchTree tree = new BinarySearchTree();
+            tree.Add(5);
+
+            // Act
+            bool result = tree.Contains(2);
+
+            // Assert
+            Assert.False(result);
+        }
     }
 }
