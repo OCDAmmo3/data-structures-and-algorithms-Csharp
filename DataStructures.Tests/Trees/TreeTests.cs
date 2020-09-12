@@ -33,5 +33,18 @@ namespace DataStructures.Tests.Trees
             // Assert
             Assert.Equal("Root, RootLeft, RootLeftLeft, RootLeftRight, RootRight, RootRightLeft, RootRightRight", result);
         }
+
+        [Fact]
+        public void InOrder_should_return_tree_from_farthest_left_to_farthest_right()
+        {
+            // Arrange
+            BinaryTree<string> tree = CreateTree();
+
+            // Act
+            string result = tree.InOrder(tree.Root);
+
+            // Assert
+            Assert.Equal("RootLeftLeft, RootLeft, RootLeftRight, Root, RootRightLeft, RootRight, RootRightRight", result);
+        }
     }
 }
