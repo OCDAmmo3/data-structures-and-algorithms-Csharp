@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using DataStructures.Trees;
+using System;
 
 namespace DataStructures.Tests.Trees
 {
@@ -15,6 +16,18 @@ namespace DataStructures.Tests.Trees
             tree.Root.Left.Right = new BinaryTree<string>.Node("RootLeftRight");
             tree.Root.Right.Left = new BinaryTree<string>.Node("RootRightLeft");
             tree.Root.Right.Right = new BinaryTree<string>.Node("RootRightRight");
+            return tree;
+        }
+        public static BinaryTree<int> CreateTreeInt()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+            tree.Root = new BinaryTree<int>.Node(1);
+            tree.Root.Left = new BinaryTree<int>.Node(8);
+            tree.Root.Right = new BinaryTree<int>.Node(2);
+            tree.Root.Left.Left = new BinaryTree<int>.Node(63);
+            tree.Root.Left.Right = new BinaryTree<int>.Node(1234);
+            tree.Root.Right.Left = new BinaryTree<int>.Node(94);
+            tree.Root.Right.Right = new BinaryTree<int>.Node(23);
             return tree;
         }
 
@@ -106,6 +119,43 @@ namespace DataStructures.Tests.Trees
 
             // Assert
             Assert.False(result);
+        }
+
+        [Fact]
+        public void FindMaxValue_returns_max_value()
+        {
+            // Arrange
+            BinaryTree<int> tree = CreateTreeInt();
+
+            // Act
+            int result = tree.FindMaximumValue();
+
+            // Assert
+            Assert.Equal(1234, result);
+        }
+
+        [Fact]
+        public void FindMaxValue_returns_exception_on_string_tree_or_empty_tree()
+        {
+            // Arrange
+            BinaryTree<string> tree1 = CreateTree();
+            BinaryTree<int> tree2 = new BinaryTree<int>();
+
+            // Assert 1
+            Exception ex1 = Assert.Throws<NotIntTreeException>(() =>
+            {
+                // Act 1
+                tree1.FindMaximumValue();
+            });
+            Assert.Equal("I only work for int trees.", ex1.Message);
+
+            // Assert 2
+            Exception ex2 = Assert.Throws<EmptyTreeException>(() =>
+            {
+                // Act 2
+                tree2.FindMaximumValue();
+            });
+            Assert.Equal("This tree is empty. No maximum value.", ex2.Message);
         }
     }
 }
