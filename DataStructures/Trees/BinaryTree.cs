@@ -1,9 +1,11 @@
 ﻿using DataStructures.StacksAndQueues;
+using System;
 
 namespace DataStructures.Trees
 {
 
     public class BinaryTree<T>
+        where T : IComparable<T>
     {
         public class Node
         {
@@ -79,6 +81,39 @@ namespace DataStructures.Trees
                 PostOrder(root.Right, queue);
             queue.Enqueue(root.Value);
             return queue.ToString();
+        }
+
+        public T FindMaximumValue()
+        {
+            if (Root == null)
+                throw new EmptyTreeException();
+            if (Root.Value.GetType() != typeof(int))
+                throw new NotIntTreeException();
+
+            T max = Root.Value;
+
+            Node root = Root;
+            if (root.Left != null)
+                max = FindMaximumValue(root.Left, max);
+            if (root.Right != null)
+                max = FindMaximumValue(root.Right, max);
+
+            return max;
+        }
+
+        public T FindMaximumValue(Node root, T max)
+        {
+            if (root.Left != null)
+            {
+                max = max.CompareTo(root.Left.Value) > 0 ? max : root.Left.Value;
+                FindMaximumValue(root.Left, max);
+            }
+            if (root.Right != null)
+            {
+                max = max.CompareTo(root.Right.Value) > 0 ? max : root.Right.Value;
+                FindMaximumValue(root.Right, max);
+            }
+            return max;
         }
     }
 }
