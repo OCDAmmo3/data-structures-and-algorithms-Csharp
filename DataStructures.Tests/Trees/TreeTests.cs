@@ -157,5 +157,21 @@ namespace DataStructures.Tests.Trees
             });
             Assert.Equal("This tree is empty. No maximum value.", ex2.Message);
         }
+
+        [Fact]
+        public void BreadthFirst_returns_values_in_a_breadth_first_traversal()
+        {
+            // Arrange
+            BinaryTree<string> tree1 = CreateTree();
+            BinaryTree<int> tree2 = CreateTreeInt();
+
+            // Act
+            string result1 = tree1.BreadthFirst();
+            string result2 = tree2.BreadthFirst();
+
+            // Assert
+            Assert.Equal("Root, RootLeft, RootRight, RootLeftLeft, RootLeftRight, RootRightLeft, RootRightRight", result1);
+            Assert.Equal("1, 8, 2, 63, 1234, 94, 23", result2);
+        }
     }
 }

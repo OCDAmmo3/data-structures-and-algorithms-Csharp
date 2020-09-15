@@ -1,5 +1,7 @@
 ﻿using DataStructures.StacksAndQueues;
 using System;
+using System.Collections;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace DataStructures.Trees
 {
@@ -114,6 +116,39 @@ namespace DataStructures.Trees
                 FindMaximumValue(root.Right, max);
             }
             return max;
+        }
+
+        public string BreadthFirst()
+        {
+            Queue<Node> queue = new Queue<Node>();
+            Node root = Root;
+            queue.Enqueue(root);
+
+            System.Collections.Generic.List<T> list = new System.Collections.Generic.List<T>();
+
+            bool didThrow = false;
+
+            while (didThrow == false)
+            {
+                Node temp = queue.Dequeue();
+                list.Add(temp.Value);
+
+                if (temp.Left != null)
+                    queue.Enqueue(temp.Left);
+
+                if (temp.Right != null)
+                    queue.Enqueue(temp.Right);
+
+                try
+                {
+                    queue.Peek();
+                }
+                catch
+                {
+                    didThrow = true;
+                }
+            }
+            return String.Join(", ", list);
         }
     }
 }
