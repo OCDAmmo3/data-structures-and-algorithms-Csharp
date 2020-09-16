@@ -31,16 +31,21 @@ namespace Challenges.Trees
 
         public static BinaryTree<string> FizzBuzzify(BinaryTree<int>.Node root, BinaryTree<string>.Node newRoot, BinaryTree<string> resultTree)
         {
+            BinaryTree<string>.Node prev = newRoot;
+
             if (root.Left != null)
             {
                 newRoot.Left = new BinaryTree<string>.Node(FizzBuzz(root.Left.Value));
-                return FizzBuzzify(root.Left, newRoot.Left, resultTree);
+                FizzBuzzify(root.Left, newRoot.Left, resultTree);
             }
             if (root.Right != null)
             {
                 newRoot.Right = new BinaryTree<string>.Node(FizzBuzz(root.Right.Value));
-                return FizzBuzzify(root.Right, newRoot.Right, resultTree);
+                FizzBuzzify(root.Right, newRoot.Right, resultTree);
             }
+
+            if (root.Right == null && root.Left == null)
+                prev.Value = FizzBuzz(root.Value);
 
             return resultTree;
         }
