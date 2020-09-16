@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using DataStructures.Trees;
 using System;
+using Challenges.Trees;
 
 namespace DataStructures.Tests.Trees
 {
@@ -28,6 +29,19 @@ namespace DataStructures.Tests.Trees
             tree.Root.Left.Right = new BinaryTree<int>.Node(1234);
             tree.Root.Right.Left = new BinaryTree<int>.Node(94);
             tree.Root.Right.Right = new BinaryTree<int>.Node(23);
+            return tree;
+        }
+
+        public static BinaryTree<int> CreateTreeFB()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+            tree.Root = new BinaryTree<int>.Node(1);
+            tree.Root.Left = new BinaryTree<int>.Node(3);
+            tree.Root.Right = new BinaryTree<int>.Node(4);
+            tree.Root.Left.Left = new BinaryTree<int>.Node(5);
+            tree.Root.Left.Right = new BinaryTree<int>.Node(10);
+            tree.Root.Right.Left = new BinaryTree<int>.Node(9);
+            tree.Root.Right.Right = new BinaryTree<int>.Node(15);
             return tree;
         }
 
@@ -172,6 +186,20 @@ namespace DataStructures.Tests.Trees
             // Assert
             Assert.Equal("Root, RootLeft, RootRight, RootLeftLeft, RootLeftRight, RootRightLeft, RootRightRight", result1);
             Assert.Equal("1, 8, 2, 63, 1234, 94, 23", result2);
+        }
+
+        [Fact]
+        public void FizzBuzzTree_converts_all_valid_values()
+        {
+            // Arrange
+            BinaryTree<int> tree = CreateTreeFB();
+
+            // Act
+            BinaryTree<string> newTree = TreeChallenges.FizzBuzzify(tree);
+
+            // Assert
+            string result = newTree.BreadthFirst();
+            Assert.Equal("1, Fizz, 4, Buzz, Buzz, Fizz, FizzBuzz", result);
         }
     }
 }
