@@ -195,10 +195,10 @@ namespace DataStructures.Tests.Trees
             BinaryTree<int> tree = CreateTreeFB();
 
             // Act
-            TreeChallenges.FizzBuzzify(tree);
+            BinaryTree<string> newTree = TreeChallenges.FizzBuzzify(tree);
 
             // Assert
-            string result = tree.BreadthFirst();
+            string result = newTree.BreadthFirst();
             Assert.Equal("1, Fizz, 4, Buzz, Buzz, Fizz, FizzBuzz", result);
         }
     }

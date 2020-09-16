@@ -1,5 +1,4 @@
-﻿using DataStructures.LinkedLists;
-using DataStructures.Trees;
+﻿using DataStructures.Trees;
 
 namespace Challenges.Trees
 {
@@ -8,29 +7,54 @@ namespace Challenges.Trees
         public static BinaryTree<string> FizzBuzzify(BinaryTree<int> tree)
         {
             if (tree.Root == null)
-                return tree;
+                throw new EmptyTreeException();
             if (tree.Root.Value.GetType() != typeof(int))
                 throw new NotIntTreeException();
 
-            BinaryTree<string> resultTree = new BinaryTree<string>();
-            BinaryTree<string>.Node newRoot = resultTree.Root;
-
             BinaryTree<int>.Node root = tree.Root;
-            if (root.Value % 15 == 0)
-                newRoot = new BinaryTree<string>.Node("FizzBuzz");
-            else if (root.Value % 5 == 0)
-                newRoot = new BinaryTree<string>.Node("Buzz");
-            else if (root.Value % 3 == 0)
-                newRoot = new BinaryTree<string>.Node("Fizz");
-            else
-                newRoot = new BinaryTree<string>.Node(root.Value.ToString());
+            BinaryTree<string> resultTree = new BinaryTree<string>();
+            resultTree.Root = new BinaryTree<string>.Node(FizzBuzz(root.Value));
 
             if (root.Left != null)
-                FizzBuzzify(root.Left, newRoot.Left, resultTree);
+            {
+                resultTree.Root.Left = new BinaryTree<string>.Node(FizzBuzz(root.Left.Value));
+                FizzBuzzify(root.Left, resultTree.Root.Left, resultTree);
+            }
             if (root.Right != null)
-                FizzBuzzify(root.Right, newRoot.Right, resultTree);
+            {
+                resultTree.Root.Right = new BinaryTree<string>.Node(FizzBuzz(root.Right.Value));
+                FizzBuzzify(root.Right, resultTree.Root.Right, resultTree);
+            }
 
             return resultTree;
+        }
+
+        public static BinaryTree<string> FizzBuzzify(BinaryTree<int>.Node root, BinaryTree<string>.Node newRoot, BinaryTree<string> resultTree)
+        {
+            if (root.Left != null)
+            {
+                newRoot.Left = new BinaryTree<string>.Node(FizzBuzz(root.Left.Value));
+                return FizzBuzzify(root.Left, newRoot.Left, resultTree);
+            }
+            if (root.Right != null)
+            {
+                newRoot.Right = new BinaryTree<string>.Node(FizzBuzz(root.Right.Value));
+                return FizzBuzzify(root.Right, newRoot.Right, resultTree);
+            }
+
+            return resultTree;
+        }
+
+        public static string FizzBuzz(int value)
+        {
+            if (value % 15 == 0)
+                return "FizzBuzz";
+            else if (value % 5 == 0)
+                return "Buzz";
+            else if (value % 3 == 0)
+                return "Fizz";
+            else
+                return value.ToString();
         }
     }
 }
